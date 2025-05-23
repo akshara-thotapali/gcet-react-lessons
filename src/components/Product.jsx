@@ -1,12 +1,10 @@
 export default function Product(props) {
-const price = props.price + 10000
-const desc = "This is Product Description"
+  console.log(props);
   return (
-    <div>
-      <h3>This is Product component - {props.name},{price}</h3>
-      <p>
-        {desc}
-      </p>
-    </div>
+  <div>
+    <h2>{props.value.name}</h2>
+    <h3>{props.value.price}</h3>
+    <button>Add to cart</button>
+  </div>
   );
 }
