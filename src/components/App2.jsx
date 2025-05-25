@@ -11,8 +11,9 @@ export default function App2() {
       <h1>This is App2 component</h1>
       <div className="App-Product-Container">
         {products.map((value) => (
-          <Product value={value} />
-        ))}
+    <Product key={value.id} value={value} />
+))}
+
       </div>
     </div>
   );
