@@ -26,7 +26,7 @@ export default function CricketScoreboard() {
 
   return (
     <div style={{ textAlign: "center", marginTop: "50px" }}>
-      <h1>🏏 Cricket Scoreboard 🏏</h1>
+      <h1> Cricket Scoreboard </h1>
       <div style={{ display: "flex", justifyContent: "center", gap: "30px", margin: "20px" }}>
         <div>
           <h2>{runs}</h2>
