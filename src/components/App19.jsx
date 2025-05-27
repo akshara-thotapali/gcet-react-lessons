@@ -15,10 +15,6 @@ export default function CricketScoreboard() {
   };
 
   const handleWicket = () => {
-    if (wickets >= 10) {
-      setMessage("Game Over!");
-      return;
-    }
     if (wickets + 1 >= 10) {
       setWickets(10);
       setMessage("Game Over!");
