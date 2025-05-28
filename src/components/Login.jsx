@@ -1,46 +1,39 @@
-// Login.jsx
-import React, { useState, useContext } from 'react';
-import { UserContext } from './App21';
-
-function Login() {
-    const { users } = useContext(UserContext);
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [message, setMessage] = useState('');
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-
-        const trimmedEmail = email.trim().toLowerCase();
-        const trimmedPassword = password.trim();
-
-        console.log('Current users:', users);
-
-        const user = users.find(
-            (u) => u.email === trimmedEmail && u.password === trimmedPassword
-        );
-
-        if (user) {
-            setMessage(`Welcome ${user.name}`);
-        } else {
-            setMessage('Invalid credentials');
-        }
-
-        setEmail('');
-        setPassword('');
-    };
-
-    return (
-        <div>
-            <h2>Login</h2>
-            <form onSubmit={handleSubmit}>
-                <input value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" required />
-                <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" required />
-                <button type="submit">Submit</button>
-            </form>
-            <p>{message}</p>
-        </div>
+import React, { useState } from "react";
+import { AppContext } from "./App21";
+import { useContext } from "react";
+export default function Login() {
+  const { users } = useContext(AppContext);
+  const [user, setUser] = useState({});
+  const [msg, setMsg] = useState();
+  const handleSubmit = () => {
+    const found = users.find(
+      (value) => value.email === user.email && value.pass === user.pass
     );
+    if (found) {
+      setMsg("Welcome " + found.name);
+    } else {
+      setMsg("Invalid User or Password");
+    }
+  };
+  return (
+    <div style={{ margin: "30px" }}>
+      <h3>Login</h3>
+      {msg}
+      <p>
+        <input
+          type="text"
+          placeholder="Email address"
+          onChange={(e) => setUser({ ...user, email: e.target.value })}
+        />
+      </p>
+      <p>
+        <input
+          type="password"
+          placeholder="Password"
+          onChange={(e) => setUser({ ...user, pass: e.target.value })}
+        />
+      </p>
+      <button onClick={handleSubmit}>Submit</button>
+    </div>
+  );
 }
-
-export default Login;
